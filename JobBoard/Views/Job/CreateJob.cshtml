@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Create a job";
+}
+
+@model JobBoard.Models.Job.JobCreate
+
+<body class="text-center">
+    <form class="form-signin" method="post" asp-action="CreateJob" asp-controller="Job" role="form">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Create a new job</h1>
+        <hr />
+        <div class="form-group">
+            <label asp-for="JobTitle" for="CreateJobTitle" class="sr-only">Job Title</label>
+            <input asp-for="JobTitle" type="text" id="CreateJobTitle" class="form-control" placeholder="Job Title">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobSalary" for="CreateJobSalary" class="sr-only">Salary</label>
+            <input asp-for="JobSalary" type="number" id="CreateJobSalary" class="form-control" placeholder="Salary">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobHourlyPay" for="CreateJobHourlyPay" class="sr-only">Hourly Pay</label>
+            <input asp-for="JobHourlyPay" type="number" id="CreateJobHourlyPay" class="form-control" placeholder="Hourly Pay">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobLocation" for="CreateJobLocation" class="sr-only">Location</label>
+            <input asp-for="JobLocation" type="text" id="CreateJobLocation" class="form-control" placeholder="Location">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobRequirements" for="CreateJobRequirements" class="sr-only">Requirements</label>
+            <input asp-for="JobRequirements" type="text" id="CreateJobRequirements" class="form-control" placeholder="Requirements">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobSummary" for="CreateJobSummary" class="sr-only">Summary</label>
+            <input asp-for="JobSummary" type="text" id="CreateJobSummary" class="form-control" placeholder="Summary">
+        </div>
+        <div class="form-group">
+            <label asp-for="JobDescription" for="CreateJobDescription" class="sr-only">Full Description</label>
+            <input asp-for="JobDescription" type="text" id="CreateJobDescription" class="form-control" placeholder="Full Description">
+        </div>
+        <div class="checkbox mb-3">
+            <label>
+                <p></p>
+                <p>Job Availability:</p>
+                <input asp-for="JobIsAvailable" type="radio" id="Availability" value="true"> Available
+                <input asp-for="JobIsAvailable" type="radio" id="Availability" value="false"> Unavailable
+            </label>
+        </div>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <p></p>
+        <p></p>
+    </form>
+</body>

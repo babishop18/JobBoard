@@ -1,0 +1,33 @@
+﻿@model JobBoard.Models.Job.JobDetail 
+
+@{
+    ViewData["Title"] = "Job Info";
+}
+
+<div>
+    <h1>@Model.JobTitle</h1>
+    @if (Model.JobSalary != null)
+    {
+        <h5>Salary: $@Model.JobSalary per year</h5>
+    }
+    @if (Model.JobHourlyPay != null)
+    {
+        <h5>Hourly: $@Model.JobHourlyPay per hour</h5>
+    }
+    <h5>Location: @Model.JobLocation</h5>
+    <h5>Requirements: @Model.JobRequirements</h5>
+    <h5>Summary: @Model.JobSummary</h5>
+    @if (Model.JobDescription != null)
+    {
+        <h5>Description: @Model.JobDescription</h5>
+    }
+    @if (Model.JobIsAvailable == true)
+    {
+        <h5>Availability: Open</h5>
+    }
+    @if (Model.JobIsAvailable == false)
+    {
+        <h5>Availability: Closed</h5>
+    }
+    <h5>Date Posted: @Model.DateJobPosted</h5>
+</div>

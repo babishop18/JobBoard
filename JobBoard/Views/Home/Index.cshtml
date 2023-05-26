@@ -2,7 +2,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Welcome to JobCarnival</h1>
+        <p class="lead text-muted">A place where connections are made and networks get established. </p>
+        <p class="lead text-muted">Find your job today!</p>
+        @if (User?.Identity?.IsAuthenticated == false)
+        {
+            <p>
+                <a asp-controller="User" asp-action="LoginUser" class="btn btn-primary my-2">Sign in</a>
+            <a asp-controller="User" asp-action="RegisterUser" class="btn btn-secondary my-2">Create an account</a>
+        </p>
+        }
+        @if (User.IsInRole("Company"))
+        {
+            <h4>Get started by clicking the Jobs tab</h4>
+        }
+        @if (User.IsInRole("Applicant"))
+        {
+            <h4>Get started by clicking the "Jobs" or "Applications" tab</h4>
+        }
+
+    </div>
+</section>

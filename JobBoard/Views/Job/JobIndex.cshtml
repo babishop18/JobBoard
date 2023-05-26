@@ -1,0 +1,64 @@
+﻿@model IEnumerable<JobBoard.Models.Job.JobListItem>
+ 
+@{
+    ViewData["Title"] = "Jobs";
+}
+@{
+    if (User.IsInRole("Company"))
+    {
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Job Search</h1>
+                <p class="lead text-muted">This is where you can create new opportunities and manage your job postings </p>
+                <p class="lead text-muted" >Click "View Details" on a job posting to find any applications that may have been submitted</p>
+                <p>
+                    <a class="btn btn-primary my-2" asp-controller="Job" asp-action="CreateJob">Create jobs</a>                    
+                </p>
+            </div>
+        </section>
+
+        <section class="album py-5 bg-light">
+            <div class="container">
+                 @foreach(var item in Model)
+                { 
+                    <div class="col">
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">                    
+                                <div class="card-body">
+                                    <h3>@item.JobTitle </h3>
+                                    <p class="card-text">@item.JobSalary @item.JobHourlyPay</p>
+                                        <p class="card-text">@item.JobLocation</p>
+                                        <p class="card-text">@item.JobSummary</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" asp-action="JobInfo" asp-controller="Job" value="@item.JobId">View Details</button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit Job</button>
+                                            <button value=@item.JobId type="button" class="btn btn-sm btn-outline-secondary" method="post" asp-action="RemoveJob" asp-controller="Job">Remove</button>
+                                        </div>
+                                        <small class="text-muted">@item.DateJobPosted</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                } 
+  
+            </div>
+        </section>
+    }
+}  
+
+@{
+    if (User.IsInRole("Applicant"))
+    {
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Job Search</h1>
+                <p class="lead text-muted">This is where you can discover new opportunities or take a look at your applications to see if you received a response</p>
+                <p>
+                    <a class="btn btn-primary my-2" asp-controller="Job" asp-action="CreateJob">Create jobs</a>
+                </p>
+            </div>
+        </section>
+    }
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Create Account";
+}
+
+@model JobBoard.Models.User.UserCreate
+
+<body class="text-center">
+    <form class="form-signup" method="post" asp-action="RegisterUser" asp-controller="User" role="form">
+    <img class="mb-4" src="./Assets/JCIcon.jpg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Create an account</h1>
+        <div class="form-group" >
+            <label asp-for="UserName" for="inputUserName" class="sr-only">Username</label>
+            <input asp-for="UserName" type="text" id="inputUserName" class="form-control" placeholder="Username">
+        </div>
+        <div class="form-group">
+                <label asp-for="Email" for="inputEmail" class="sr-only">Email address</label>
+            <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email Address">
+            </div>
+            <div class="form-group">
+            <label asp-for="Password" for="inputPassword" class="sr-only">Password</label>
+            <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+            <label asp-for="ConfirmPassword" for="confirmPassword" class="sr-only">Password</label>
+            <input asp-for="ConfirmPassword" type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="checkbox mb-3">
+                <label>
+                    <p></p>
+                    <p>Select the type of account you wish to create:</p>
+                <input asp-for="Role" type="radio" id="userRole" value="company"> Business
+                <input asp-for="Role" type="radio" id="userRole" value="applicant"> Applicant
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
+            <p></p>
+        
+    </form>
+</body>
